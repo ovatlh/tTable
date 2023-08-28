@@ -1,0 +1,134 @@
+.t-table-style {
+  --t-table__border-collapse: collapse;
+  --t-table__border-style: none;
+  --t-table-tbody__position: relative;
+
+  --th-td__border-width: 0.1em;
+  --th-td__border-color: #000000;
+  --th-td__border-style: solid;
+  
+  --th__bg-color: #232323;
+  --th__color: #ffffff;
+  --th__padding: 0.6em;
+
+  --th-row-expander__width: 1%;
+  --th-row-expander__min-width: 1%;
+
+  --t-status__position: absolute;
+  --t-status__left: 0;
+  --t-status__top: 0;
+  --t-status__width: 100%;
+  --t-status__height: 100%;
+  --t-status__display: grid;
+
+  --t-status-content__display: grid;
+
+  --td__padding: 0.2em;
+
+  --even__background-color: rgba(0, 0, 0, 0.05);
+  --odd__background-color: rgba(0, 0, 0, 0.2);
+
+  --btn-row-expander__cursor: pointer;
+  --btn-row-expander__width: 100%;
+
+  --table-expanded-th-expanded__text-align: end;
+  --table-expanded-th-expanded__width: 15ch;
+  --table-expanded__background-color: rgba(0, 0, 0, 0.05);
+  --table-expanded__word-break: break-all;
+}
+
+.t-table-container {
+  overflow-x: hidden;
+}
+
+.t-table-container .t-table {
+  width: 100%;
+  border-collapse: var(--t-table__border-collapse);
+  border-style: var(--t-table__border-style);
+}
+
+.t-table-container .t-table :is(.th-row, .td-row, .th-row-expander, .td-row-expander, .td-row-expanded) {
+  border-width: var(--th-td__border-width);
+  border-color: var(--th-td__border-color);
+  border-style: var(--th-td__border-style);
+}
+
+.t-table-container .t-table :is(.th-row, .th-row-expander) {
+  background-color: var(--th__bg-color);
+  color: var(--th__color);
+  padding: var(--th__padding);
+}
+
+.t-table-container .th-row-expander {
+  width: var(--th-row-expander__width);
+  min-width: var(--th-row-expander__min-width);
+}
+
+.t-table-container :is(.tbody-status, .tbody-data) {
+  position: var(--t-table-tbody__position);
+}
+
+.t-table-container .tr-status {
+  position: var(--t-status__position);
+  left: var(--t-status__left);
+  top: var(--t-status__top);
+  width: var(--t-status__width);
+  height: var(--t-status__height);
+  display: var(--t-status__display);
+}
+.t-table-container .tr-status .td-status-content{
+  display: var(--t-status-content__display);
+  padding: 0em;
+}
+
+.t-table-container .t-table .tbody-status .tr-status-nrowsintbody .td-status-nrowsintbody {
+  border-width: 0em;
+  padding: 0em;
+}
+
+.t-table-container .t-table .tbody-data :is(.td-row-expander, .td-row) {
+  padding: var(--td__padding);
+}
+
+.t-table-container .t-table .tbody-data :is(tr.even, tr.even.expanded) {
+  background-color: var(--even__background-color);
+}
+
+.t-table-container .t-table .tbody-data :is(tr.odd, tr.odd.expanded) {
+  background-color: var(--odd__background-color);
+}
+
+.t-table-container .t-table .tbody-data .table-expanded {
+  width: 100%;
+}
+
+.t-table-container .t-table .tbody-data .td-row-expander .btn-row-expander {
+  cursor: var(--btn-row-expander__cursor);
+  width: var(--btn-row-expander__width);
+}
+.t-table-container .t-table .tbody-data .td-row-expander .btn-row-expander * {
+  user-select: none;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.t-table-container .t-table :is(.th-row-expander, .td-row-expander, .is-overflow) {
+  display: none;
+}
+
+.t-table-container.is-overflow .t-table :is(.th-row-expander, .td-row-expander) {
+  display: table-cell;
+}
+
+.t-table-container .t-table .table-expanded .th-expanded {
+  text-align: var(--table-expanded-th-expanded__text-align);
+  min-width: 1%;
+  width: var(--table-expanded-th-expanded__width);
+}
+.t-table-container .t-table .table-expanded .td-expanded {
+  min-width: 1%;
+}
+.t-table-container .t-table .table-expanded :is(.th-expanded, .td-expanded) {
+  background-color: var(--table-expanded__background-color);
+  word-break: var(--table-expanded__word-break);
+}
