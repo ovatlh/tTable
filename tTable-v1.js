@@ -15,7 +15,9 @@ var tTable=tTable||(function () {
         trList_Expanded.forEach((trItem, trIndex, trList) => {
           const tr_index = trItem.index;
           const trExpanded = tbody_DOM.querySelector(`tr.expanded[data-row-index="${tr_index}"]`);
-          trExpanded.remove();
+          if(trExpanded) {
+            trExpanded.remove();
+          }
         });
       } else {
         trList_Expanded.forEach((trItem, trIndex, trList) => {
