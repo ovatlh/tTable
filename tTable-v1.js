@@ -619,6 +619,5 @@ var tTable=tTable||(function () {
     init,
     setStatus,
     refreshDataList,
-    trRefUpdate,
   };
 })();
